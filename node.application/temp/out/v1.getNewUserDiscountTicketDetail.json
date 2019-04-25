@@ -1,0 +1,12 @@
+{
+  "s": 1,
+  "m": "ok",
+  "d": {
+    "isNewUser": true,
+    "isPurchased": false,
+    "isExpired": false,
+    "restCount": 0,
+    "serverTimeAt": "2019-01-08T16:09:07.000Z",
+    "createdAt": null
+  }
+}
