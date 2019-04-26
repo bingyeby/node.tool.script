@@ -36,7 +36,7 @@ if (argv.g) {
 } else if (argv.r) {
   /*
   * 执行node.application中命令
-  *   1. zipMin 压缩一个文件夹,在同级目录中生成zip文件(只支持第一层次,不支持嵌套结构过滤文件)
+  *   1. zipMin 压缩一个文件夹,在同级目录中生成zip文件
   *   2. har 处理浏览器请求文件HAR,将其中的url与response提取出来(生成mock文件)
   * */
   nodeApplication[argv.r] && nodeApplication[argv.r]()
