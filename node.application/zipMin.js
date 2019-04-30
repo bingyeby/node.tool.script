@@ -38,10 +38,8 @@ module.exports = async (outFile) => {
 
   let tempFileList = await fs.readdir(copyTemp)
 
-  // 文件过滤(可删除,已无效)
-  let fileListFilter = tempFileList.filter((n) => {
-    return !['node_modules', '.idea', '.git', '.vscode'].includes(n) // 待排除文件名
-  }).map((n) => {
+  // 获取文件路径
+  let fileListFilter = tempFileList.map((n) => {
     return path.join(copyTemp, n)
   })
 
