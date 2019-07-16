@@ -5,7 +5,7 @@ let url = require('url')
 let path = require('path')
 let glob = require('glob')
 
-async function dealHar (harPath) {
+async function dealHar(harPath) {
   let workspacePath = process.cwd()
   let harJson = await fss.readJSON(harPath)
   let filterData = harJson.log.entries.filter((n) => {
@@ -27,7 +27,7 @@ async function dealHar (harPath) {
   for (let n of filterData) {
     let urlPathName = url.parse(n.requestUrl).pathname
     // console.log(` urlPathName`, urlPathName)
-    let ws = fs.createWriteStream(path.join(workspacePath, 'mock.temp', urlPathName.replace(/^\//, '').replace(/\//gi, '.') + '.json'), { start: 0 })
+    let ws = fs.createWriteStream(path.join(workspacePath, 'mock.temp', urlPathName.replace(/^\//, '').replace(/\//gi, '.') + '.json'), {start: 0})
     ws.write(JSON.stringify(JSON.parse(n.responseContentText), null, 2), 'utf8')
     ws.end('')
 
@@ -39,18 +39,18 @@ async function dealHar (harPath) {
         },`
   }
   responseMockJsStr += '\n}'
-  let ws = fs.createWriteStream(path.join(workspacePath, 'mock.temp', `${harPath}.js`), { start: 0 })
+  let ws = fs.createWriteStream(path.join(workspacePath, 'mock.temp', `${harPath}.js`), {start: 0})
   ws.write(responseMockJsStr, 'utf8')
   ws.end('')
 }
 
 
 let dealHarAll = () => {
-  glob('*.har', { ignore: 'node_modules/**' }, (er, files) => {
+  glob('*.har', {ignore: 'node_modules/**'}, (er, files) => {
     (async () => {
-      for (const i of files) {
-        await dealHar(i)
-        console.log('处理文件:', i)
+      for (const harFile of files) {
+        await dealHar(harFile)
+        console.log('处理文件:', harFile)
       }
     })()
   })

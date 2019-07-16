@@ -32,6 +32,7 @@
     "inspector-proxy": "^1.2.1",
     "lodash": "^4.17.11",
     "merge-stream": "^1.0.1",
+    "natives": "^1.1.6",
     "nodeJs-zip": "^1.0.4",
     "require-dir": "^0.3.2",
     "yargs": "^8.0.2"
