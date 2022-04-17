@@ -8,7 +8,7 @@ module.exports = async (outFile) => {
   let tempFileList = await fs.readdir(basicPath)
   for (let i = 0; i < tempFileList.length; i++) {
     let n = tempFileList[i]
-    if (/jpg$/.test(n)) {
+    if (/[jpg|png|mp4|mp3]$/.test(n)) {
       console.log(`n`, n)
       await fs.rename(`${basicPath}/${n}`, `${basicPath}/${n.replace(/^\d+\-/, '')}`)
     }
