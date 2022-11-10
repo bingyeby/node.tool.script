@@ -34,6 +34,9 @@
     "merge-stream": "^1.0.1",
     "natives": "^1.1.6",
     "nodeJs-zip": "^1.0.4",
+    "pdf-image": "^2.0.0",
+    "pdf-lib": "^1.17.1",
+    "pdf2pic": "^2.1.4",
     "require-dir": "^0.3.2",
     "yargs": "^8.0.2"
   }
