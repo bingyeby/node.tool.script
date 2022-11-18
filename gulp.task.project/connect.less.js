@@ -1,33 +1,33 @@
-//µ¼Èë¹¤¾ß°ü require('node_modulesÀï¶ÔÓ¦Ä£¿é')
-var gulp = require('gulp'), //±¾µØ°²×°gulpËùÓÃµ½µÄµØ·½
-    less = require('gulp-less'),
-    connect = require('gulp-connect');//livereload ×Ô¶¯Ë¢ĞÂ
+//å¯¼å…¥å·¥å…·åŒ… require('node_modulesé‡Œå¯¹åº”æ¨¡å—')
+var gulp = require('gulp'), //æœ¬åœ°å®‰è£…gulpæ‰€ç”¨åˆ°çš„åœ°æ–¹
+  less = require('gulp-less'),
+  connect = require('gulp-connect');//livereload è‡ªåŠ¨åˆ·æ–°
 
 
-//¶¨ÒåÒ»¸ötestLessÈÎÎñ£¨×Ô¶¨ÒåÈÎÎñÃû³Æ£©
+//å®šä¹‰ä¸€ä¸ªtestLessä»»åŠ¡ï¼ˆè‡ªå®šä¹‰ä»»åŠ¡åç§°ï¼‰
 gulp.task('testLess', function () {
-    gulp.src('src/less/index.less') //¸ÃÈÎÎñÕë¶ÔµÄÎÄ¼ş
-        .pipe(less()) //¸ÃÈÎÎñµ÷ÓÃµÄÄ£¿é
-        .pipe(gulp.dest('src/css'))//½«»áÔÚsrc/cssÏÂÉú³Éindex.css
-        .pipe(connect.reload());
+  gulp.src('src/less/index.less') //è¯¥ä»»åŠ¡é’ˆå¯¹çš„æ–‡ä»¶
+    .pipe(less()) //è¯¥ä»»åŠ¡è°ƒç”¨çš„æ¨¡å—
+    .pipe(gulp.dest('src/css'))//å°†ä¼šåœ¨src/cssä¸‹ç”Ÿæˆindex.css
+    .pipe(connect.reload());
 });
 
-//¶¨ÒåhtmlÈÎÎñ
+//å®šä¹‰htmlä»»åŠ¡
 gulp.task('html', function () {
-    gulp.src('src/*.html')
-        .pipe(connect.reload());
+  gulp.src('src/*.html')
+    .pipe(connect.reload());
 });
 
-//¶¨Òå¿´ÊØÈÎÎñ
+//å®šä¹‰çœ‹å®ˆä»»åŠ¡
 gulp.task('watch', function () {
-    gulp.watch('src/*.html', ['html']);
+  gulp.watch('src/*.html', ['html']);
 });
 
-//¶¨ÒålivereloadÈÎÎñ
+//å®šä¹‰livereloadä»»åŠ¡
 gulp.task('connect', function () {
-    connect.server({
-        livereload: true
-    });
+  connect.server({
+    livereload: true
+  });
 });
 gulp.task('default', ['testLess', 'watch', 'connect']);
 

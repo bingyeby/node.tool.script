@@ -2,6 +2,9 @@
 const argv = require('yargs').argv
 // const gulp = require('gulp')
 
+
+// 加载所有
+// const requireDir = require('require-dir')
 /*
   Given this directory structure:
   dir
@@ -12,23 +15,23 @@ const argv = require('yargs').argv
 
   requireDir('./dir') will return the equivalent of: { a: require('./dir/a.js'), b: require('./dir/b.json') }
 * */
-const requireDir = require('require-dir')
 
 // 1. 加载gulp task
 // requireDir('./gulp.task.normal')
 
 // 2. 加载js执行文件
-let nodeApplication = requireDir('./node.application')
+// let nodeApplication = requireDir('./node.application')
+// nodeApplication[argv.r] && nodeApplication[argv.r](argv)
 
 if (argv.g) {
   /* 执行gulp中的task */
   // gulp.run(argv.g)
 } else if (argv.r) {
   /* 执行node.application中命令 */
-  nodeApplication[argv.r] && nodeApplication[argv.r]()
+  let runjs = require(`./node.application/${argv.r}.js`)
+  runjs(argv)
 } else {
   console.log(`
-
     ### 执行gulp中的task    nodex -g server
     * server          建立一个本地服务器并支持自动刷新
     * seajs           打包压缩seajs模块化文件
